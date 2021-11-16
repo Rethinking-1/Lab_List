@@ -22,8 +22,9 @@ public:
 template<typename DataType>
 class IteratorList
 {
-  Node<DataType>* p;
+
 public:
+  Node<DataType>* p;
   IteratorList(Node<DataType>* el) :p(el){}
   IteratorList& operator++()
   {
@@ -69,9 +70,9 @@ public:
   ~List();
   ////////////////////////////
   IteratorList<DataType> Search(const DataType& d);
- // friend std:: ostream& operator<<(std::ostream& os, const List<DataType>& l);
   //void Delete(const IteratorList<DataType> start, const IteratorList<DataType> finish);
-  //friend std::ostream& operator<<(std::ostream& ostr, const List<DataType>& list);
+  template<typename DataType>
+  friend std::ostream& operator<<(std::ostream& ostr, const List<DataType>& list);
   //void Clean();
 };
 //////////////////////////////////////////////////////////
@@ -139,6 +140,7 @@ void List<DataType>::pop_front()
     t->~Node();
   }
 }
+//////////////////////////////////////////////////////////
 template<typename DataType>
 inline void List<DataType>::pop_back()
 {
@@ -220,6 +222,7 @@ inline List<DataType>::~List()
   delete pHead;
   pHead = nullptr;
 }
+//////////////////////////////////////////////////////////
 template<typename DataType>
 inline IteratorList<DataType> List<DataType>::Search(const DataType& d)
 {
@@ -229,17 +232,21 @@ inline IteratorList<DataType> List<DataType>::Search(const DataType& d)
   return find;
 }
 //////////////////////////////////////////////////////////
-//template<typename DataType>
-//std::ostream& operator<<(std::ostream& ostr,const List<DataType>&list)
-//{
-//  IteratorList<DataType>tmp(list.pHead);
-//  while (!End(tmp.p))
-//  {
-//    ostr << tmp.p->Data << "\n";
-//    tmp++;
-//  }
-//  return ostr;
-//}
+ template<typename DataType>
+inline std::ostream & operator<<(std::ostream & ostr, const List<DataType> & list)
+{
+  IteratorList<DataType>tmp(list.pHead);
+  if (tmp.p != nullptr)
+  {
+    while (tmp.p->pNext != nullptr)
+    {
+      ostr << tmp.p->Data << "\n";
+      ++tmp;
+    }
+    ostr<< tmp.p->Data << "\n";
+  }
+  else
+    ostr << "list is empty\n";
+  return ostr;
+}
 //////////////////////////////////////////////////////////
-
-

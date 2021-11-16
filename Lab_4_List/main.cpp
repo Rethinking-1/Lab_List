@@ -5,6 +5,7 @@ using namespace std;
 int main()
 {
   List<int> mylist, mylist2;
+  cout << mylist;
   for (int i = 0; i < 5; i++)
   {
     mylist.push_back(i);
@@ -14,10 +15,10 @@ int main()
   //while (true)
   //{
   //  mylist.reverse();
-  //  cout << "--------------\n";
-  //  mylist.print();
+  //  cout << "--------------\n" << mylist;
+  // // mylist.print();
 
-  //}
+ // }
   mylist.Search(3);
   IteratorList<int> it2 = mylist.begin();
   ++it2;
@@ -26,7 +27,7 @@ int main()
  // mylist.Merge(it2, mylist2);
   //insert
  // mylist.push_front(34);
-  mylist.push_back(75);
+ // mylist.push_back(75);
   IteratorList<int> it = mylist.begin();
   it.operator++();
   mylist.insert(it, 230);
