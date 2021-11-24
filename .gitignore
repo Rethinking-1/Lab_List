@@ -386,3 +386,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+Lab_4_List/unitests_List/IteratorListTests.cpp
