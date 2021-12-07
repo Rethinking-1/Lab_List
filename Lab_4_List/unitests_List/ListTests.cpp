@@ -125,7 +125,7 @@ TEST(List, push_front_is_correct)
     list.push_back(k);//back
     k++;
   }
-  EXPECT_EQ(5, list.begin().p->Data);
+  EXPECT_EQ(5, *list.begin());
 }
 
 TEST(List, push_back_is_correct)
@@ -142,7 +142,7 @@ TEST(List, push_back_is_correct)
   IteratorList<int>it = list.begin();
   ++it;
   list.insert(it, 777);
-  EXPECT_EQ(5, list.end().p->Data);
+  EXPECT_EQ(5, *list.end());
 }
 
 TEST(List, pop_front_is_correct)
@@ -153,7 +153,7 @@ TEST(List, pop_front_is_correct)
     list.push_front(i);
   }
   list.pop_front();
-  EXPECT_EQ(8, list.begin().p->Data);
+  EXPECT_EQ(8, *list.begin());
 }
 
 TEST(List, pop_back_is_correct)
@@ -164,7 +164,7 @@ TEST(List, pop_back_is_correct)
     list.push_front(i);
   }
   list.pop_back();
-  EXPECT_EQ(1, list.end().p->Data);
+  EXPECT_EQ(1, *list.end());
 }
 
 TEST(List, can_delete_multiple_items)
@@ -230,7 +230,7 @@ TEST(List, reverse_not_empty_List_with_one_el_is_correct)
   List<int>list;
   list.push_back(5);
   list.reverse();
-  EXPECT_EQ(5, list.begin().p->Data);
+  EXPECT_EQ(5, *list.begin());
 }
 
 TEST(List, reverse_not_empty_List_with_two_el_is_correct)
@@ -281,7 +281,7 @@ TEST(List, search_is_equal_last_el_if_there_is_none)
     list.push_front(i * 2);
   }
   IteratorList<int>it = list.Search(5);
-  EXPECT_EQ(list.Get(it), list.end().p->Data);
+  EXPECT_EQ(list.Get(it), *list.end());
 }
 
 TEST(List, Only_unique_elements_is_correct)

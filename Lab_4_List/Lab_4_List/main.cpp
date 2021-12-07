@@ -3,6 +3,17 @@
 using namespace std;
 int main()
 {
+  List<int> mylist_test;
+  for (size_t i = 0; i < 10; i++)
+  {
+    mylist_test.push_back(rand()%100);
+  }
+  mylist_test.Only_unique_elements();
+  cout << mylist_test << "\n";
+ // mylist_test.Merge_sort(mylist_test.begin(), mylist_test.end());
+
+
+
   List<int> mylist, mylist2;
   cout << mylist;
   for (size_t i = 0; i < 10; i++)

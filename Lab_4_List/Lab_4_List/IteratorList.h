@@ -7,7 +7,6 @@ class List;
 template<typename DataType>
 class IteratorList
 {
-
 public:
   Node<DataType>* p;
   IteratorList(Node<DataType>* el) :p(el) {}
@@ -17,6 +16,10 @@ public:
       throw::std::logic_error("Nowhere further");
     p = p->pNext;
     return *this;
+  }
+  DataType operator*()
+  {
+    return p->Data;
   }
   //IteratorList& operator--()
   //{
