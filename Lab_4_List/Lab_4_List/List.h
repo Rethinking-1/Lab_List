@@ -9,7 +9,6 @@ template<typename DataType>
 class List
 {
   Node<DataType>* pHead;
-  //Node<DataType>* pEnd;
   bool check_end(const Node<DataType>* node)
   {
     if (node != nullptr)
@@ -46,8 +45,6 @@ public:
   friend std::ostream& operator<<(std::ostream& ostr, const List<DataType>& list);
 };
 
-
-
 //////////////////////////////////////////////////////////
 template<typename DataType>
 inline List<DataType>::List()
@@ -65,13 +62,10 @@ inline List<DataType>::List(const List<DataType>& list)
   while (!check_end(it.p))
   {
     push_back(it.p->Data);
-    /*push_front(it.p->Data);*/
     ++it;
   }
   if (it.p != nullptr)
     push_back(it.p->Data);
-   // push_front(it.p->Data);
- // this->reverse();
 }
 //////////////////////////////////////////////////////////
 template<typename DataType>
@@ -96,7 +90,6 @@ inline void List<DataType>::push_front(const DataType& Data)
   if (isEmpty())
   {
     pHead = new Node<DataType>(Data, nullptr);
-  //  pEnd = pHead;
   }
   else
     pHead = new Node<DataType>(Data, pHead);
@@ -161,7 +154,7 @@ inline void List<DataType>::Delete(const IteratorList<DataType> start, const Ite
   IteratorList<DataType> it = start;
   if (start.p != nullptr)
   {
-    while (!check_end(it.p) && it.p->pNext != finish.p/*->pNext*/ && it.p->pNext != finish.p->pNext)
+    while (!check_end(it.p) && it.p->pNext != finish.p && it.p->pNext != finish.p->pNext)
       Delete(it);
   }
   ++it;
@@ -348,115 +341,6 @@ inline void List<DataType>::sortLow()
     }
     ++it;
   }
-}
-//////////////////////////////////////////////////////////
-template<typename DataType>
-inline List<DataType> List<DataType>::Merge_sort(IteratorList<DataType> left, IteratorList<DataType> right)
-{
-  if (*left==*right)
-    return *this;
-  //IteratorList<DataType> right2 = right;
-  //right = Split_the_list(left, right);
-  //std::cout << "\n" << *right << "\n";
-  //List<DataType> temp = Merge_sort(left, right);//
-  //std::cout << temp << "\n";
-  //std::cout << "left:" << *left << ",right:" << *right << "\n";
-  ////std::cout << temp << "\n";
-  //if (*left >= *right)
-  //{
-  //  Delete(left, end());
-  //  std::cout << *this << "\n\n";
-  //  Merge(left, *this);
-  //  std::cout << *this << "\n\n";
-  //  return *this;
-  //}
-  //else
-  //{
-  //  Delete(right,end());
-  //  std::cout << *this << "\n\n";
-  //  Merge(right, *this);
-  //  std::cout << *this << "\n\n";
-  //  return *this;
-  //}
-  List<DataType>tmp(Split_the_list(left, right));
-  IteratorList<DataType>mid = Split_the_list_it(left, right);
-  if (*mid == *left)
-    ++mid;
-  std::cout << "tmp\n" << tmp << "\n";
-  List<DataType>tmp2(Split_the_list(mid, right));
-  List<DataType>ans = tmp.Merge_sort(tmp.begin(), tmp.end());
-  std::cout << "mid:" << *mid << "\n";
-
-
-  std::cout << "tmp\n" << tmp << "\n";
-  std::cout << "tm2\n" << tmp2 << "\n";
-  std::cout << "ans\n" << ans;
-  if (*left >= *right)
-  {
-    tmp.Merge(tmp.end(), tmp2);
-    ans = tmp;
-    std::cout << "ans\n" << ans;
-    return ans;
-  }
-  else
-  {
-    tmp2.Merge(tmp2.end(), tmp);
-    ans = tmp2;
-    std::cout << "ans\n" << ans;
-    return ans;
-  }
- // List<DataType>temp(*this);
- // Delete(right.p, end());
- // Delete(begin(), left.p);
- // if (!check_end(left.p))
- // {
- //   ///////////////////////////////////
- //   if (left.p != nullptr && left.p->pNext != nullptr && left.p->pNext->pNext == nullptr)
- //   {
- //     if (left.p->Data > right.p->Data)
- //     {
- //       std::swap(left.p->Data, right.p->Data);
- //     }
- //   }
- //   ///////////////////////////////////
- //   else
- //   {
- //     right = Split_the_list(left,right);
- //     std::cout << "\n" << right.p->Data << "\n";
- //     temp = Merge_sort(left, right);
- //    // Merge_sort(it2, temp.end());
- //     while (!check_end(left.p) && !check_end(right.p))
- //     {
- //       if (left.p->Data > right.p->Data)
- //       {
- //         Node<DataType>*save = left.p;
- //         push_front(save->Data);
- //         left.p = left.p->pNext;
- //       }
- //       else
- //       {
- //         Node<DataType>*save = right.p;
- //         push_front(save->Data);
- //         right.p = right.p->pNext;
- //       }
- //     }
- //     while (!check_end(left.p))
- //     {
- //       Node<DataType>*save = left.p;
- //       push_front(save->Data);
- //       left.p = left.p->pNext;
- //     }
- //     while (!check_end(right.p))
- //     {
- //       Node<DataType>*save = right.p;
- //       push_front(save->Data);
- //       right.p = right.p->pNext;
- //     }
- //   }
- // }
- //// reverse();
- // //*this = temp;
- // return temp;
 }
 //////////////////////////////////////////////////////////
  template<typename DataType>

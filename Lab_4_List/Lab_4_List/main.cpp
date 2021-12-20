@@ -3,16 +3,13 @@
 using namespace std;
 int main()
 {
-  List<int> mylist_test;
-  for (size_t i = 0; i < 10; i++)
-  {
-    mylist_test.push_back(rand()%100);
-  }
-  mylist_test.Only_unique_elements();
-  cout << mylist_test << "\n";
- // mylist_test.Merge_sort(mylist_test.begin(), mylist_test.end());
-
-
+  //List<int> mylist_test;
+  //for (size_t i = 0; i < 10; i++)
+  //{
+  //  mylist_test.push_back(rand()%100);
+  //}
+  //mylist_test.Only_unique_elements();
+  //cout << mylist_test << "\n";
 
   List<int> mylist, mylist2;
   cout << mylist;
@@ -27,6 +24,7 @@ int main()
   cout << "mylist after sortUP\n" << mylist;
   mylist.sortLow();
   cout << "mylist after sortLow\n" << mylist;
+  mylist.Clean();
   for (int i = 0; i < 5; i++)
   {
     mylist.push_back(i);

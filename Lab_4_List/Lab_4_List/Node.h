@@ -9,6 +9,4 @@ public:
   Node(const Node<DataType>& node2) { Data = node2.Data; pNext = node2; }
   bool operator==(const Node<DataType>& node2) const { return Data == node2.Data; }
   bool operator!=(const Node<DataType>& node2) const { return !(*this == node2); }
-  //Node* pBack;
-  // Node(DataType _Data = DataType(), Node* Next = nullptr, Node* Back = nullptr) : Data(_Data), pNext(Next), pBack(Back){}
 };

@@ -21,10 +21,5 @@ public:
   {
     return p->Data;
   }
-  //IteratorList& operator--()
-  //{
-  //  p = p->pBack;
-  //  return *this;
-  //}
   friend class List<DataType>;
 };
