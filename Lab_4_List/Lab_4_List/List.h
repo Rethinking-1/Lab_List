@@ -37,7 +37,6 @@ public:
   IteratorList<DataType> Split_the_list_it(IteratorList<DataType> left, IteratorList<DataType> right);
   void sortUP();
   void sortLow();
-  List<DataType> Merge_sort(IteratorList<DataType> left, IteratorList<DataType> right);
   IteratorList<DataType> begin();
   IteratorList<DataType> end();
   ~List();
